@@ -26,8 +26,10 @@ Flask-BrowserID requires that Flask-Login's LoginManager be configured and regis
 
     browser_id = BrowserID()
     browser_id.user_loader(get_user)
+    browser_id.redirect_url = '/url/to/redirect/to'
     browser_id.init_app(app)
 
+By default, if the login is a success, the current page will be reloaded, if you want to redirect to a different location, you can add specify it in `redirect_url`.
 Now the routes `/api/login` and `/api/logout` have been registered with your app. A javascript bundle, `auth_script`, has also been added to the top level of your request context, so you can access it in templates like so:
 
 [Note: `auth_script` requires JQuery and Mozilla's `include.js`]

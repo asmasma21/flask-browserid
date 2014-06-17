@@ -1,6 +1,8 @@
 $(function() {
   var gotAssertion, logoutCallback, loginURL, logoutURL;
 
+  var redirect_url = '{{ redirect_url }}';
+
   gotAssertion = function(assertion) {
     if (assertion) {
       return $.ajax({
@@ -10,7 +12,9 @@ $(function() {
           assertion: assertion
         },
         success: function(res, status, xhr) {
-          return location.reload(true);
+           if(redirect_url.length != 0)
+              return location = redirect_url;
+           return location.reload(true);
         },
         error: function(res, status, xhr) {
           return alert("login failure: " + status);
