@@ -2,6 +2,7 @@ $(function() {
   var gotAssertion, logoutCallback, loginURL, logoutURL;
 
   var redirect_url = '{{ redirect_url }}';
+  var redirect_url_after_logout = '{{ redirect_url_after_logout }}';
 
   gotAssertion = function(assertion) {
     if (assertion) {
@@ -27,6 +28,8 @@ $(function() {
       type: 'POST',
       url: '{{ logout_url }}',
       success: function() {
+        if(redirect_url_after_logout.length != 0)
+          return location = redirect_url_after_logout;
         return location.reload(true);
       },
       error: function(res, status, xhr) {

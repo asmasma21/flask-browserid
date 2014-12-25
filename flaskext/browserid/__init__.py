@@ -18,6 +18,7 @@ class BrowserID(object):
         self.login_callback = None
         self.logout_callback = None
         self.redirect_url = ''
+        self.redirect_url_after_logout = ''
 
         if app:
             self.init_app(app)
@@ -40,7 +41,8 @@ class BrowserID(object):
                                     ).render(
                                         login_url=self.login_url,
                                         logout_url=self.logout_url,
-                                        redirect_url=self.redirect_url
+                                        redirect_url=self.redirect_url,
+                                        redirect_url_after_logout=self.redirect_url_after_logout
                                     )
             self.views.app_context_processor(self.load_auth_script)
 

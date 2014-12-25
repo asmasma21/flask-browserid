@@ -36,6 +36,7 @@ Flask-BrowserID requires that Flask-Login's LoginManager be configured and regis
     browser_id = BrowserID()
     browser_id.user_loader(get_user)
     browser_id.redirect_url = '/url/to/redirect/to'
+    browser_id.redirect_url_after_logout = '/url/to/redirect/to/after/logout'
     browser_id.init_app(app)
 
 By default, if the login is a success, the current page will be reloaded, if you want to redirect to a different location, you can add specify it in `redirect_url`.
